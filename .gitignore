@@ -1,0 +1,59 @@
+# IBM Content Navigator Components - .gitignore
+
+# Build directories
+**/build-war/
+**/build/
+**/dist/
+**/bin/
+**/target/
+
+# IBM Libraries (not included due to licensing)
+**/lib/*.jar
+SharedResources/Lib/*.jar
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.war
+*.jar
+*.ear
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Node modules (if any JavaScript tools are added)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Bob specific (keep configuration but ignore cache)
+.bob/cache/
+.bob/temp/
+
+# Git specific
+*.orig
+
+# Made with Bob
