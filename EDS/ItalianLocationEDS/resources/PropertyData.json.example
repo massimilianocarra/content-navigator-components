@@ -1,0 +1,21 @@
+[
+  {
+    "symbolicName": "Provincia",
+    "displayMode": "readwrite",
+    "required": true,
+    "choiceList": {
+      "displayName": "Seleziona Provincia",
+      "choices": []
+    },
+    "hasDependentProperties": true
+  },
+  {
+    "symbolicName": "Comune",
+    "displayMode": "readwrite",
+    "required": true,
+    "choiceList": {
+      "displayName": "Seleziona Comune",
+      "choices": []
+    }
+  }
+]
