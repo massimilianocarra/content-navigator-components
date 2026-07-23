@@ -1,0 +1,6 @@
+{
+  "statePropertyName": "Statodinascita",
+  "provincePropertyName": "Provinciadinascita",
+  "municipalityPropertyName": "Comunedinascita",
+  "description": "Configurazione dei symbolic names delle proprietà per l'EDS Italian Location. Modificare questi valori per adattare l'EDS a property template con nomi diversi."
+}

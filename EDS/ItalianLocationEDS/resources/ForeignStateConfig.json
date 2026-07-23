@@ -1,0 +1,4 @@
+{
+  "foreignStateDefaultValue": "Stato di nascita estero",
+  "description": "Valore predefinito per i campi Provincia e Comune quando viene selezionato uno stato estero (diverso da Italia)"
+}

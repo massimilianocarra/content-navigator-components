@@ -1,0 +1,11 @@
+{
+  "firstNamePropertyName": "Nome",
+  "lastNamePropertyName": "Cognome",
+  "birthDatePropertyName": "DataDiNascita",
+  "birthStatePropertyName": "Statodinascita",
+  "birthProvincePropertyName": "Provinciadinascita",
+  "birthMunicipalityPropertyName": "Comunedinascita",
+  "genderPropertyName": "SessoPersona",
+  "fiscalCodePropertyName": "CodiceFiscale",
+  "description": "Configurazione dei symbolic names delle proprietà per il calcolo del Codice Fiscale. Modificare questi valori per adattare l'EDS a property template con nomi diversi."
+}

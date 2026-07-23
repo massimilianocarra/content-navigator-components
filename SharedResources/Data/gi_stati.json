@@ -1,0 +1,1436 @@
+[
+  {
+    "displayName": "Italia",
+    "value": "ITA",
+    "english_country_name": "Italy",
+    "taxcode_country_code": ""
+  },
+  {
+    "displayName": "Afghanistan",
+    "value": "AFG",
+    "english_country_name": "Afghanistan",
+    "taxcode_country_code": "Z200"
+  },
+  {
+    "displayName": "Albania",
+    "value": "ALB",
+    "english_country_name": "Albania",
+    "taxcode_country_code": "Z100"
+  },
+  {
+    "displayName": "Algeria",
+    "value": "DZA",
+    "english_country_name": "Algeria",
+    "taxcode_country_code": "Z301"
+  },
+  {
+    "displayName": "Andorra",
+    "value": "AND",
+    "english_country_name": "Andorra",
+    "taxcode_country_code": "Z101"
+  },
+  {
+    "displayName": "Angola",
+    "value": "AGO",
+    "english_country_name": "Angola",
+    "taxcode_country_code": "Z302"
+  },
+  {
+    "displayName": "Anguilla (isola)",
+    "value": "AIA",
+    "english_country_name": "Anguilla",
+    "taxcode_country_code": "Z529"
+  },
+  {
+    "displayName": "Antarctica",
+    "value": "ATA",
+    "english_country_name": "Antarctica",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Antigua E Barbuda",
+    "value": "ATG",
+    "english_country_name": "Antigua and Barbuda",
+    "taxcode_country_code": "Z532"
+  },
+  {
+    "displayName": "Antille Olandesi (sudamericane)",
+    "value": "ANT",
+    "english_country_name": "",
+    "taxcode_country_code": "Z501"
+  },
+  {
+    "displayName": "Arabia Saudita",
+    "value": "SAU",
+    "english_country_name": "Saudi Arabia",
+    "taxcode_country_code": "Z203"
+  },
+  {
+    "displayName": "Argentina",
+    "value": "ARG",
+    "english_country_name": "Argentina",
+    "taxcode_country_code": "Z600"
+  },
+  {
+    "displayName": "Armenia",
+    "value": "ARM",
+    "english_country_name": "Armenia",
+    "taxcode_country_code": "Z252"
+  },
+  {
+    "displayName": "Aruba (isola)",
+    "value": "ABW",
+    "english_country_name": "Aruba",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Australia",
+    "value": "AUS",
+    "english_country_name": "Australia",
+    "taxcode_country_code": "Z700"
+  },
+  {
+    "displayName": "Austria",
+    "value": "AUT",
+    "english_country_name": "Austria",
+    "taxcode_country_code": "Z102"
+  },
+  {
+    "displayName": "Azerbaigian",
+    "value": "AZE",
+    "english_country_name": "Azerbaijan",
+    "taxcode_country_code": "Z253"
+  },
+  {
+    "displayName": "Bahama",
+    "value": "BHS",
+    "english_country_name": "Bahamas",
+    "taxcode_country_code": "Z502"
+  },
+  {
+    "displayName": "Bahrein",
+    "value": "BHR",
+    "english_country_name": "Bahrain",
+    "taxcode_country_code": "Z204"
+  },
+  {
+    "displayName": "Bangladesh",
+    "value": "BGD",
+    "english_country_name": "Bangladesh",
+    "taxcode_country_code": "Z249"
+  },
+  {
+    "displayName": "Barbados",
+    "value": "BRB",
+    "english_country_name": "Barbados",
+    "taxcode_country_code": "Z522"
+  },
+  {
+    "displayName": "Belgio",
+    "value": "BEL",
+    "english_country_name": "Belgium",
+    "taxcode_country_code": "Z103"
+  },
+  {
+    "displayName": "Belize",
+    "value": "BLZ",
+    "english_country_name": "Belize",
+    "taxcode_country_code": "Z512"
+  },
+  {
+    "displayName": "Benin",
+    "value": "BEN",
+    "english_country_name": "Benin",
+    "taxcode_country_code": "Z314"
+  },
+  {
+    "displayName": "Bermuda (isole)",
+    "value": "BMU",
+    "english_country_name": "Bermuda",
+    "taxcode_country_code": "Z400"
+  },
+  {
+    "displayName": "Bhutan",
+    "value": "BTN",
+    "english_country_name": "Bhutan",
+    "taxcode_country_code": "Z205"
+  },
+  {
+    "displayName": "Bielorussia=russia Bianca",
+    "value": "BLR",
+    "english_country_name": "Belarus",
+    "taxcode_country_code": "Z139"
+  },
+  {
+    "displayName": "Bolivia",
+    "value": "BOL",
+    "english_country_name": "Bolivia (Plurinational State of)",
+    "taxcode_country_code": "Z601"
+  },
+  {
+    "displayName": "Bosnia Ed Erzegovina",
+    "value": "BIH",
+    "english_country_name": "Bosnia and Herzegovina",
+    "taxcode_country_code": "Z153"
+  },
+  {
+    "displayName": "Botswana",
+    "value": "BWA",
+    "english_country_name": "Botswana",
+    "taxcode_country_code": "Z358"
+  },
+  {
+    "displayName": "Bouvet (isola)",
+    "value": "BVT",
+    "english_country_name": "Bouvet Island",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Brasile",
+    "value": "BRA",
+    "english_country_name": "Brazil",
+    "taxcode_country_code": "Z602"
+  },
+  {
+    "displayName": "Brunei",
+    "value": "BRN",
+    "english_country_name": "Brunei Darussalam",
+    "taxcode_country_code": "Z207"
+  },
+  {
+    "displayName": "Bulgaria",
+    "value": "BGR",
+    "english_country_name": "Bulgaria",
+    "taxcode_country_code": "Z104"
+  },
+  {
+    "displayName": "Burkina",
+    "value": "BFA",
+    "english_country_name": "Burkina Faso",
+    "taxcode_country_code": "Z354"
+  },
+  {
+    "displayName": "Burundi",
+    "value": "BDI",
+    "english_country_name": "Burundi",
+    "taxcode_country_code": "Z305"
+  },
+  {
+    "displayName": "Cambogia",
+    "value": "KHM",
+    "english_country_name": "Cambodia",
+    "taxcode_country_code": "Z208"
+  },
+  {
+    "displayName": "Camerun",
+    "value": "CMR",
+    "english_country_name": "Cameroon",
+    "taxcode_country_code": "Z306"
+  },
+  {
+    "displayName": "Canada",
+    "value": "CAN",
+    "english_country_name": "Canada",
+    "taxcode_country_code": "Z401"
+  },
+  {
+    "displayName": "Capo Verde",
+    "value": "CPV",
+    "english_country_name": "Cabo Verde",
+    "taxcode_country_code": "Z307"
+  },
+  {
+    "displayName": "Cayman (isole)",
+    "value": "CYM",
+    "english_country_name": "Cayman Islands",
+    "taxcode_country_code": "Z530"
+  },
+  {
+    "displayName": "Ceca Repubblica",
+    "value": "CZE",
+    "english_country_name": "Czech Republic",
+    "taxcode_country_code": "Z156"
+  },
+  {
+    "displayName": "Centrafricana Repubblica",
+    "value": "CAF",
+    "english_country_name": "Central African Republic",
+    "taxcode_country_code": "Z308"
+  },
+  {
+    "displayName": "Christmas (isola)",
+    "value": "CXR",
+    "english_country_name": "Christmas Island",
+    "taxcode_country_code": "Z702"
+  },
+  {
+    "displayName": "Ciad",
+    "value": "TCD",
+    "english_country_name": "Chad",
+    "taxcode_country_code": "Z309"
+  },
+  {
+    "displayName": "Cile",
+    "value": "CHL",
+    "english_country_name": "Chile",
+    "taxcode_country_code": "Z603"
+  },
+  {
+    "displayName": "Cina Repubblica Popolare",
+    "value": "CHN",
+    "english_country_name": "China",
+    "taxcode_country_code": "Z210"
+  },
+  {
+    "displayName": "Cipro",
+    "value": "CYP",
+    "english_country_name": "Cyprus",
+    "taxcode_country_code": "Z211"
+  },
+  {
+    "displayName": "Citta' Del Vaticano",
+    "value": "VAT",
+    "english_country_name": "Holy See",
+    "taxcode_country_code": "Z106"
+  },
+  {
+    "displayName": "Cocos (isole)",
+    "value": "CCK",
+    "english_country_name": "Cocos (Keeling) Islands",
+    "taxcode_country_code": "Z212"
+  },
+  {
+    "displayName": "Colombia",
+    "value": "COL",
+    "english_country_name": "Colombia",
+    "taxcode_country_code": "Z604"
+  },
+  {
+    "displayName": "Comore",
+    "value": "COM",
+    "english_country_name": "Comoros",
+    "taxcode_country_code": "Z310"
+  },
+  {
+    "displayName": "Congo Repubblica Democratica",
+    "value": "COD",
+    "english_country_name": "Congo (Democratic Republic of the)",
+    "taxcode_country_code": "Z312"
+  },
+  {
+    "displayName": "Congo Repubblica Popolare",
+    "value": "COG",
+    "english_country_name": "Congo",
+    "taxcode_country_code": "Z311"
+  },
+  {
+    "displayName": "Cook (isole)",
+    "value": "COK",
+    "english_country_name": "Cook Islands",
+    "taxcode_country_code": "Z703"
+  },
+  {
+    "displayName": "Corea Del Nord",
+    "value": "PRK",
+    "english_country_name": "Korea (Democratic People's Republic of)",
+    "taxcode_country_code": "Z214"
+  },
+  {
+    "displayName": "Corea Del Sud",
+    "value": "KOR",
+    "english_country_name": "Korea (Republic of)",
+    "taxcode_country_code": "Z213"
+  },
+  {
+    "displayName": "Costa D'avorio",
+    "value": "CIV",
+    "english_country_name": "Côte d'Ivoire",
+    "taxcode_country_code": "Z313"
+  },
+  {
+    "displayName": "Costa Rica",
+    "value": "CRI",
+    "english_country_name": "Costa Rica",
+    "taxcode_country_code": "Z503"
+  },
+  {
+    "displayName": "Croazia",
+    "value": "HRV",
+    "english_country_name": "Croatia",
+    "taxcode_country_code": "Z149"
+  },
+  {
+    "displayName": "Cuba",
+    "value": "CUB",
+    "english_country_name": "Cuba",
+    "taxcode_country_code": "Z504"
+  },
+  {
+    "displayName": "Danimarca",
+    "value": "DNK",
+    "english_country_name": "Denmark",
+    "taxcode_country_code": "Z107"
+  },
+  {
+    "displayName": "Dominica (isola)",
+    "value": "DMA",
+    "english_country_name": "Dominica",
+    "taxcode_country_code": "Z526"
+  },
+  {
+    "displayName": "Dominicana Repubblica",
+    "value": "DOM",
+    "english_country_name": "Dominican Republic",
+    "taxcode_country_code": "Z505"
+  },
+  {
+    "displayName": "Ecuador",
+    "value": "ECU",
+    "english_country_name": "Ecuador",
+    "taxcode_country_code": "Z605"
+  },
+  {
+    "displayName": "Egitto",
+    "value": "EGY",
+    "english_country_name": "Egypt",
+    "taxcode_country_code": "Z336"
+  },
+  {
+    "displayName": "El Salvador",
+    "value": "SLV",
+    "english_country_name": "El Salvador",
+    "taxcode_country_code": "Z506"
+  },
+  {
+    "displayName": "Emirati Arabi Uniti",
+    "value": "ARE",
+    "english_country_name": "United Arab Emirates",
+    "taxcode_country_code": "Z215"
+  },
+  {
+    "displayName": "Eritrea",
+    "value": "ERI",
+    "english_country_name": "Eritrea",
+    "taxcode_country_code": "Z368"
+  },
+  {
+    "displayName": "Estonia",
+    "value": "EST",
+    "english_country_name": "Estonia",
+    "taxcode_country_code": "Z144"
+  },
+  {
+    "displayName": "Etiopia",
+    "value": "ETH",
+    "english_country_name": "Ethiopia",
+    "taxcode_country_code": "Z315"
+  },
+  {
+    "displayName": "Faer Oer (isole)",
+    "value": "FRO",
+    "english_country_name": "Faroe Islands",
+    "taxcode_country_code": "Z108"
+  },
+  {
+    "displayName": "Falkland (isole)",
+    "value": "FLK",
+    "english_country_name": "Falkland Islands (Malvinas)",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Figi=viti (isole)",
+    "value": "FJI",
+    "english_country_name": "Fiji",
+    "taxcode_country_code": "Z704"
+  },
+  {
+    "displayName": "Filippine",
+    "value": "PHL",
+    "english_country_name": "Philippines",
+    "taxcode_country_code": "Z216"
+  },
+  {
+    "displayName": "Finlandia",
+    "value": "FIN",
+    "english_country_name": "Finland",
+    "taxcode_country_code": "Z109"
+  },
+  {
+    "displayName": "Francia",
+    "value": "FRA",
+    "english_country_name": "France",
+    "taxcode_country_code": "Z110"
+  },
+  {
+    "displayName": "Francia, Metropolitan",
+    "value": "FXX",
+    "english_country_name": "",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Gabon",
+    "value": "GAB",
+    "english_country_name": "Gabon",
+    "taxcode_country_code": "Z316"
+  },
+  {
+    "displayName": "Gambia",
+    "value": "GMB",
+    "english_country_name": "Gambia",
+    "taxcode_country_code": "Z317"
+  },
+  {
+    "displayName": "Georgia",
+    "value": "GEO",
+    "english_country_name": "Georgia",
+    "taxcode_country_code": "Z254"
+  },
+  {
+    "displayName": "Georgia Del Sud E Sandwich Australi",
+    "value": "SGS",
+    "english_country_name": "South Georgia and the South Sandwich Islands",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Germania",
+    "value": "DEU",
+    "english_country_name": "Germany",
+    "taxcode_country_code": "Z112"
+  },
+  {
+    "displayName": "Ghana",
+    "value": "GHA",
+    "english_country_name": "Ghana",
+    "taxcode_country_code": "Z318"
+  },
+  {
+    "displayName": "Giamaica",
+    "value": "JAM",
+    "english_country_name": "Jamaica",
+    "taxcode_country_code": "Z507"
+  },
+  {
+    "displayName": "Giappone",
+    "value": "JPN",
+    "english_country_name": "Japan",
+    "taxcode_country_code": "Z219"
+  },
+  {
+    "displayName": "Gibilterra",
+    "value": "GIB",
+    "english_country_name": "Gibraltar",
+    "taxcode_country_code": "Z113"
+  },
+  {
+    "displayName": "Gibuti",
+    "value": "DJI",
+    "english_country_name": "Djibouti",
+    "taxcode_country_code": "Z361"
+  },
+  {
+    "displayName": "Giordania",
+    "value": "JOR",
+    "english_country_name": "Jordan",
+    "taxcode_country_code": "Z220"
+  },
+  {
+    "displayName": "Gr. Bret. - Irlanda Del Nord (regno Unito)",
+    "value": "GBR",
+    "english_country_name": "United Kingdom of Great Britain and Northern Ireland",
+    "taxcode_country_code": "Z114"
+  },
+  {
+    "displayName": "Grecia",
+    "value": "GRC",
+    "english_country_name": "Greece",
+    "taxcode_country_code": "Z115"
+  },
+  {
+    "displayName": "Grenada",
+    "value": "GRD",
+    "english_country_name": "Grenada",
+    "taxcode_country_code": "Z524"
+  },
+  {
+    "displayName": "Groenlandia",
+    "value": "GRL",
+    "english_country_name": "Greenland",
+    "taxcode_country_code": "Z402"
+  },
+  {
+    "displayName": "Guadalupa",
+    "value": "GLP",
+    "english_country_name": "Guadeloupe",
+    "taxcode_country_code": "Z508"
+  },
+  {
+    "displayName": "Guam (isola)",
+    "value": "GUM",
+    "english_country_name": "Guam",
+    "taxcode_country_code": "Z706"
+  },
+  {
+    "displayName": "Guatemala",
+    "value": "GTM",
+    "english_country_name": "Guatemala",
+    "taxcode_country_code": "Z509"
+  },
+  {
+    "displayName": "Guayana=guiana Francese",
+    "value": "GUF",
+    "english_country_name": "French Guiana",
+    "taxcode_country_code": "Z607"
+  },
+  {
+    "displayName": "Guinea Bissau",
+    "value": "GNB",
+    "english_country_name": "Guinea-Bissau",
+    "taxcode_country_code": "Z320"
+  },
+  {
+    "displayName": "Guinea Equatoriale",
+    "value": "GNQ",
+    "english_country_name": "Equatorial Guinea",
+    "taxcode_country_code": "Z321"
+  },
+  {
+    "displayName": "Guinea Repubblica Popolare",
+    "value": "GIN",
+    "english_country_name": "Guinea",
+    "taxcode_country_code": "Z319"
+  },
+  {
+    "displayName": "Guyana",
+    "value": "GUY",
+    "english_country_name": "Guyana",
+    "taxcode_country_code": "Z606"
+  },
+  {
+    "displayName": "Haiti",
+    "value": "HTI",
+    "english_country_name": "Haiti",
+    "taxcode_country_code": "Z510"
+  },
+  {
+    "displayName": "Honduras",
+    "value": "HND",
+    "english_country_name": "Honduras",
+    "taxcode_country_code": "Z511"
+  },
+  {
+    "displayName": "Hong Kong",
+    "value": "HKG",
+    "english_country_name": "Hong Kong",
+    "taxcode_country_code": "Z221"
+  },
+  {
+    "displayName": "India",
+    "value": "IND",
+    "english_country_name": "India",
+    "taxcode_country_code": "Z222"
+  },
+  {
+    "displayName": "Indonesia",
+    "value": "IDN",
+    "english_country_name": "Indonesia",
+    "taxcode_country_code": "Z223"
+  },
+  {
+    "displayName": "Iran",
+    "value": "IRN",
+    "english_country_name": "Iran (Islamic Republic of)",
+    "taxcode_country_code": "Z224"
+  },
+  {
+    "displayName": "Iraq",
+    "value": "IRQ",
+    "english_country_name": "Iraq",
+    "taxcode_country_code": "Z225"
+  },
+  {
+    "displayName": "Irlanda",
+    "value": "IRL",
+    "english_country_name": "Ireland",
+    "taxcode_country_code": "Z116"
+  },
+  {
+    "displayName": "Islanda",
+    "value": "ISL",
+    "english_country_name": "Iceland",
+    "taxcode_country_code": "Z117"
+  },
+  {
+    "displayName": "Isole Vergini Americane",
+    "value": "VIR",
+    "english_country_name": "Virgin Islands (U.S.)",
+    "taxcode_country_code": "Z520"
+  },
+  {
+    "displayName": "Isole Vergini Britanniche",
+    "value": "VGB",
+    "english_country_name": "Virgin Islands (British)",
+    "taxcode_country_code": "Z525"
+  },
+  {
+    "displayName": "Israele",
+    "value": "ISR",
+    "english_country_name": "Israel",
+    "taxcode_country_code": "Z226"
+  },
+  {
+    "displayName": "Iugoslavia",
+    "value": "YUG",
+    "english_country_name": "",
+    "taxcode_country_code": "Z118"
+  },
+  {
+    "displayName": "Kazakistan",
+    "value": "KAZ",
+    "english_country_name": "Kazakhstan",
+    "taxcode_country_code": "Z255"
+  },
+  {
+    "displayName": "Kenya",
+    "value": "KEN",
+    "english_country_name": "Kenya",
+    "taxcode_country_code": "Z322"
+  },
+  {
+    "displayName": "Kirghizistan",
+    "value": "KGZ",
+    "english_country_name": "Kyrgyzstan",
+    "taxcode_country_code": "Z256"
+  },
+  {
+    "displayName": "Kiribati",
+    "value": "KIR",
+    "english_country_name": "Kiribati",
+    "taxcode_country_code": "Z731"
+  },
+  {
+    "displayName": "Kuwait",
+    "value": "KWT",
+    "english_country_name": "Kuwait",
+    "taxcode_country_code": "Z227"
+  },
+  {
+    "displayName": "Laos",
+    "value": "LAO",
+    "english_country_name": "Lao People's Democratic Republic",
+    "taxcode_country_code": "Z228"
+  },
+  {
+    "displayName": "Lesotho",
+    "value": "LSO",
+    "english_country_name": "Lesotho",
+    "taxcode_country_code": "Z359"
+  },
+  {
+    "displayName": "Lettonia",
+    "value": "LVA",
+    "english_country_name": "Latvia",
+    "taxcode_country_code": "Z145"
+  },
+  {
+    "displayName": "Libano",
+    "value": "LBN",
+    "english_country_name": "Lebanon",
+    "taxcode_country_code": "Z229"
+  },
+  {
+    "displayName": "Liberia",
+    "value": "LBR",
+    "english_country_name": "Liberia",
+    "taxcode_country_code": "Z325"
+  },
+  {
+    "displayName": "Libia",
+    "value": "LBY",
+    "english_country_name": "Libya",
+    "taxcode_country_code": "Z326"
+  },
+  {
+    "displayName": "Liechtenstein",
+    "value": "LIE",
+    "english_country_name": "Liechtenstein",
+    "taxcode_country_code": "Z119"
+  },
+  {
+    "displayName": "Lituania",
+    "value": "LTU",
+    "english_country_name": "Lithuania",
+    "taxcode_country_code": "Z146"
+  },
+  {
+    "displayName": "Lussemburgo",
+    "value": "LUX",
+    "english_country_name": "Luxembourg",
+    "taxcode_country_code": "Z120"
+  },
+  {
+    "displayName": "Macao",
+    "value": "MAC",
+    "english_country_name": "Macao",
+    "taxcode_country_code": "Z231"
+  },
+  {
+    "displayName": "Macedonia",
+    "value": "MKD",
+    "english_country_name": "Macedonia (the former Yugoslav Republic of)",
+    "taxcode_country_code": "Z148"
+  },
+  {
+    "displayName": "Madagascar",
+    "value": "MDG",
+    "english_country_name": "Madagascar",
+    "taxcode_country_code": "Z327"
+  },
+  {
+    "displayName": "Malawi",
+    "value": "MWI",
+    "english_country_name": "Malawi",
+    "taxcode_country_code": "Z328"
+  },
+  {
+    "displayName": "Malaysia",
+    "value": "MYS",
+    "english_country_name": "Malaysia",
+    "taxcode_country_code": "Z247  "
+  },
+  {
+    "displayName": "Maldive",
+    "value": "MDV",
+    "english_country_name": "Maldives",
+    "taxcode_country_code": "Z232"
+  },
+  {
+    "displayName": "Mali",
+    "value": "MLI",
+    "english_country_name": "Mali",
+    "taxcode_country_code": "Z329"
+  },
+  {
+    "displayName": "Malta",
+    "value": "MLT",
+    "english_country_name": "Malta",
+    "taxcode_country_code": "Z121"
+  },
+  {
+    "displayName": "Marianne (isole) (settentrionali?)",
+    "value": "MNP",
+    "english_country_name": "Northern Mariana Islands",
+    "taxcode_country_code": "Z710"
+  },
+  {
+    "displayName": "Marocco",
+    "value": "MAR",
+    "english_country_name": "Morocco",
+    "taxcode_country_code": "Z330"
+  },
+  {
+    "displayName": "Marshall (isole)",
+    "value": "MHL",
+    "english_country_name": "Marshall Islands",
+    "taxcode_country_code": "Z711"
+  },
+  {
+    "displayName": "Martinica",
+    "value": "MTQ",
+    "english_country_name": "Martinique",
+    "taxcode_country_code": "Z513"
+  },
+  {
+    "displayName": "Mauritania",
+    "value": "MRT",
+    "english_country_name": "Mauritania",
+    "taxcode_country_code": "Z331"
+  },
+  {
+    "displayName": "Maurizio (isole)",
+    "value": "MUS",
+    "english_country_name": "Mauritius",
+    "taxcode_country_code": "Z332"
+  },
+  {
+    "displayName": "Mayotte",
+    "value": "MYT",
+    "english_country_name": "Mayotte",
+    "taxcode_country_code": "Z360"
+  },
+  {
+    "displayName": "Messico",
+    "value": "MEX",
+    "english_country_name": "Mexico",
+    "taxcode_country_code": "Z514"
+  },
+  {
+    "displayName": "Micronesia Stati Federati",
+    "value": "FSM",
+    "english_country_name": "Micronesia (Federated States of)",
+    "taxcode_country_code": "Z735"
+  },
+  {
+    "displayName": "Moldavia",
+    "value": "MDA",
+    "english_country_name": "Moldova (Republic of)",
+    "taxcode_country_code": "Z140"
+  },
+  {
+    "displayName": "Monaco",
+    "value": "MCO",
+    "english_country_name": "Monaco",
+    "taxcode_country_code": "Z123"
+  },
+  {
+    "displayName": "Mongolia",
+    "value": "MNG",
+    "english_country_name": "Mongolia",
+    "taxcode_country_code": "Z233"
+  },
+  {
+    "displayName": "Montserrat (isola)",
+    "value": "MSR",
+    "english_country_name": "Montserrat",
+    "taxcode_country_code": "Z531"
+  },
+  {
+    "displayName": "Mozambico",
+    "value": "MOZ",
+    "english_country_name": "Mozambique",
+    "taxcode_country_code": "Z333"
+  },
+  {
+    "displayName": "Myanmar = Birmania",
+    "value": "MMR",
+    "english_country_name": "Myanmar",
+    "taxcode_country_code": "Z206"
+  },
+  {
+    "displayName": "Namibia",
+    "value": "NAM",
+    "english_country_name": "Namibia",
+    "taxcode_country_code": "Z300"
+  },
+  {
+    "displayName": "Nauru",
+    "value": "NRU",
+    "english_country_name": "Nauru",
+    "taxcode_country_code": "Z713"
+  },
+  {
+    "displayName": "Nepal",
+    "value": "NPL",
+    "english_country_name": "Nepal",
+    "taxcode_country_code": "Z234"
+  },
+  {
+    "displayName": "Nicaragua",
+    "value": "NIC",
+    "english_country_name": "Nicaragua",
+    "taxcode_country_code": "Z515"
+  },
+  {
+    "displayName": "Niger",
+    "value": "NER",
+    "english_country_name": "Niger",
+    "taxcode_country_code": "Z334"
+  },
+  {
+    "displayName": "Nigeria",
+    "value": "NGA",
+    "english_country_name": "Nigeria",
+    "taxcode_country_code": "Z335"
+  },
+  {
+    "displayName": "Niue (atollo)",
+    "value": "NIU",
+    "english_country_name": "Niue",
+    "taxcode_country_code": "Z714"
+  },
+  {
+    "displayName": "Norfolk (isole)",
+    "value": "NFK",
+    "english_country_name": "Norfolk Island",
+    "taxcode_country_code": "Z715"
+  },
+  {
+    "displayName": "Norvegia",
+    "value": "NOR",
+    "english_country_name": "Norway",
+    "taxcode_country_code": "Z125"
+  },
+  {
+    "displayName": "Nuova Caledonia (isole E Dipendenze)",
+    "value": "NCL",
+    "english_country_name": "New Caledonia",
+    "taxcode_country_code": "Z716"
+  },
+  {
+    "displayName": "Nuova Zelanda",
+    "value": "NZL",
+    "english_country_name": "New Zealand",
+    "taxcode_country_code": "Z719"
+  },
+  {
+    "displayName": "Oman",
+    "value": "OMN",
+    "english_country_name": "Oman",
+    "taxcode_country_code": "Z235"
+  },
+  {
+    "displayName": "Paesi Bassi",
+    "value": "NLD",
+    "english_country_name": "Netherlands",
+    "taxcode_country_code": "Z126"
+  },
+  {
+    "displayName": "Pakistan",
+    "value": "PAK",
+    "english_country_name": "Pakistan",
+    "taxcode_country_code": "Z236"
+  },
+  {
+    "displayName": "Palau Repubblica",
+    "value": "PLW",
+    "english_country_name": "Palau",
+    "taxcode_country_code": "Z734"
+  },
+  {
+    "displayName": "Panama'",
+    "value": "PAN",
+    "english_country_name": "Panama",
+    "taxcode_country_code": "Z516"
+  },
+  {
+    "displayName": "Papua Nuova Guinea",
+    "value": "PNG",
+    "english_country_name": "Papua New Guinea",
+    "taxcode_country_code": "Z730"
+  },
+  {
+    "displayName": "Paraguay",
+    "value": "PRY",
+    "english_country_name": "Paraguay",
+    "taxcode_country_code": "Z610"
+  },
+  {
+    "displayName": "Peru'",
+    "value": "PER",
+    "english_country_name": "Peru",
+    "taxcode_country_code": "Z611"
+  },
+  {
+    "displayName": "Pitcairn (e Dipendenze)",
+    "value": "PCN",
+    "english_country_name": "Pitcairn",
+    "taxcode_country_code": "Z722"
+  },
+  {
+    "displayName": "Polinesia Francese (isole)",
+    "value": "PYF",
+    "english_country_name": "French Polynesia",
+    "taxcode_country_code": "Z723"
+  },
+  {
+    "displayName": "Polonia",
+    "value": "POL",
+    "english_country_name": "Poland",
+    "taxcode_country_code": "Z127"
+  },
+  {
+    "displayName": "Portogallo",
+    "value": "PRT",
+    "english_country_name": "Portugal",
+    "taxcode_country_code": "Z128"
+  },
+  {
+    "displayName": "Puerto Rico (stato Libero Associato)",
+    "value": "PRI",
+    "english_country_name": "Puerto Rico",
+    "taxcode_country_code": "Z518"
+  },
+  {
+    "displayName": "Qatar",
+    "value": "QAT",
+    "english_country_name": "Qatar",
+    "taxcode_country_code": "Z237"
+  },
+  {
+    "displayName": "Riunione (isola)",
+    "value": "REU",
+    "english_country_name": "Réunion",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Romania",
+    "value": "ROM",
+    "english_country_name": "",
+    "taxcode_country_code": "Z129"
+  },
+  {
+    "displayName": "Ruanda",
+    "value": "RWA",
+    "english_country_name": "Rwanda",
+    "taxcode_country_code": "Z338"
+  },
+  {
+    "displayName": "Russia=federazione Russa",
+    "value": "RUS",
+    "english_country_name": "Russian Federation",
+    "taxcode_country_code": "Z154"
+  },
+  {
+    "displayName": "Saint Kitts E Nevis=s. Christopher E Nevis",
+    "value": "KNA",
+    "english_country_name": "Saint Kitts and Nevis",
+    "taxcode_country_code": "Z533"
+  },
+  {
+    "displayName": "Saint Lucia",
+    "value": "LCA",
+    "english_country_name": "Saint Lucia",
+    "taxcode_country_code": "Z527"
+  },
+  {
+    "displayName": "Saint Pierre Et Miquelon (isole)",
+    "value": "SPM",
+    "english_country_name": "Saint Pierre and Miquelon",
+    "taxcode_country_code": "Z403"
+  },
+  {
+    "displayName": "Saint Vincent E Grenadine",
+    "value": "VCT",
+    "english_country_name": "Saint Vincent and the Grenadines",
+    "taxcode_country_code": "Z528"
+  },
+  {
+    "displayName": "Salomone",
+    "value": "SLB",
+    "english_country_name": "Solomon Islands",
+    "taxcode_country_code": "Z724"
+  },
+  {
+    "displayName": "Samoa",
+    "value": "WSM ",
+    "english_country_name": "",
+    "taxcode_country_code": "Z726"
+  },
+  {
+    "displayName": "Samoa Swain (americane)",
+    "value": "ASM",
+    "english_country_name": "American Samoa",
+    "taxcode_country_code": "Z725"
+  },
+  {
+    "displayName": "San Marino",
+    "value": "SMR",
+    "english_country_name": "San Marino",
+    "taxcode_country_code": "Z130"
+  },
+  {
+    "displayName": "Sant’elena",
+    "value": "SHN",
+    "english_country_name": "Saint Helena, Ascension and Tristan da Cunha",
+    "taxcode_country_code": "Z340"
+  },
+  {
+    "displayName": "Sao Tome' E Principe (isole)",
+    "value": "STP",
+    "english_country_name": "Sao Tome and Principe",
+    "taxcode_country_code": "Z341"
+  },
+  {
+    "displayName": "Seicelle (isole)",
+    "value": "SYC",
+    "english_country_name": "Seychelles",
+    "taxcode_country_code": "Z342"
+  },
+  {
+    "displayName": "Senegal",
+    "value": "SEN",
+    "english_country_name": "Senegal",
+    "taxcode_country_code": "Z343"
+  },
+  {
+    "displayName": "Sierra Leone",
+    "value": "SLE",
+    "english_country_name": "Sierra Leone",
+    "taxcode_country_code": "Z344"
+  },
+  {
+    "displayName": "Singapore",
+    "value": "SGP",
+    "english_country_name": "Singapore",
+    "taxcode_country_code": "Z248"
+  },
+  {
+    "displayName": "Siria",
+    "value": "SYR",
+    "english_country_name": "Syrian Arab Republic",
+    "taxcode_country_code": "Z240"
+  },
+  {
+    "displayName": "Slovacca Repubblica",
+    "value": "SVK",
+    "english_country_name": "Slovakia",
+    "taxcode_country_code": "Z155"
+  },
+  {
+    "displayName": "Slovenia",
+    "value": "SVN",
+    "english_country_name": "Slovenia",
+    "taxcode_country_code": "Z150"
+  },
+  {
+    "displayName": "Somalia",
+    "value": "SOM",
+    "english_country_name": "Somalia",
+    "taxcode_country_code": "Z345"
+  },
+  {
+    "displayName": "Spagna",
+    "value": "ESP",
+    "english_country_name": "Spain",
+    "taxcode_country_code": "Z131"
+  },
+  {
+    "displayName": "Sri Lanka",
+    "value": "LKA",
+    "english_country_name": "Sri Lanka",
+    "taxcode_country_code": "Z209"
+  },
+  {
+    "displayName": "Stati Uniti - Isole Minori Lontane",
+    "value": "UMI",
+    "english_country_name": "United States Minor Outlying Islands",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Stati Uniti D'america",
+    "value": "USA",
+    "english_country_name": "United States of America",
+    "taxcode_country_code": "Z404"
+  },
+  {
+    "displayName": "Sudafricana Repubblica",
+    "value": "ZAF",
+    "english_country_name": "South Africa",
+    "taxcode_country_code": "Z347"
+  },
+  {
+    "displayName": "Sudan",
+    "value": "SDN",
+    "english_country_name": "Sudan",
+    "taxcode_country_code": "Z348"
+  },
+  {
+    "displayName": "Suriname",
+    "value": "SUR",
+    "english_country_name": "Suriname",
+    "taxcode_country_code": "Z608"
+  },
+  {
+    "displayName": "Svalbard E Jan Mayen (isole)",
+    "value": "SJM",
+    "english_country_name": "Svalbard and Jan Mayen",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Svezia",
+    "value": "SWE",
+    "english_country_name": "Sweden",
+    "taxcode_country_code": "Z132"
+  },
+  {
+    "displayName": "Svizzera",
+    "value": "CHE",
+    "english_country_name": "Switzerland",
+    "taxcode_country_code": "Z133"
+  },
+  {
+    "displayName": "Swaziland",
+    "value": "SWZ",
+    "english_country_name": "Swaziland",
+    "taxcode_country_code": "Z349"
+  },
+  {
+    "displayName": "Tagikistan",
+    "value": "TJK",
+    "english_country_name": "Tajikistan",
+    "taxcode_country_code": "Z257"
+  },
+  {
+    "displayName": "Taiwan = Formosa",
+    "value": "TWN",
+    "english_country_name": "Taiwan, Province of China[a]",
+    "taxcode_country_code": "Z217"
+  },
+  {
+    "displayName": "Tanzania",
+    "value": "TZA",
+    "english_country_name": "Tanzania, United Republic of",
+    "taxcode_country_code": "Z357"
+  },
+  {
+    "displayName": "Territori Australi E Antartici Francesi",
+    "value": "ATF",
+    "english_country_name": "French Southern Territories",
+    "taxcode_country_code": " "
+  },
+  {
+    "displayName": "Territorio Brit. Dell'oceano Indiano",
+    "value": "IOT",
+    "english_country_name": "British Indian Ocean Territory",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Territorio D. Isole Heard E Mac Donald",
+    "value": "HMD",
+    "english_country_name": "Heard Island and McDonald Islands",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Thailandia",
+    "value": "THA",
+    "english_country_name": "Thailand",
+    "taxcode_country_code": "Z241"
+  },
+  {
+    "displayName": "Timor (isola) - Orientale",
+    "value": "TMP",
+    "english_country_name": "",
+    "taxcode_country_code": "Z242"
+  },
+  {
+    "displayName": "Togo",
+    "value": "TGO",
+    "english_country_name": "Togo",
+    "taxcode_country_code": "Z351"
+  },
+  {
+    "displayName": "Tokelau (isole)",
+    "value": "TKL",
+    "english_country_name": "Tokelau",
+    "taxcode_country_code": "Z727"
+  },
+  {
+    "displayName": "Tonga",
+    "value": "TON",
+    "english_country_name": "Tonga",
+    "taxcode_country_code": "Z728"
+  },
+  {
+    "displayName": "Trinidad E Tobago",
+    "value": "TTO",
+    "english_country_name": "Trinidad and Tobago",
+    "taxcode_country_code": "Z612"
+  },
+  {
+    "displayName": "Tunisia",
+    "value": "TUN",
+    "english_country_name": "Tunisia",
+    "taxcode_country_code": "Z352"
+  },
+  {
+    "displayName": "Turchia",
+    "value": "TUR",
+    "english_country_name": "Turkey",
+    "taxcode_country_code": "Z243"
+  },
+  {
+    "displayName": "Turkemenistan",
+    "value": "TKM",
+    "english_country_name": "Turkmenistan",
+    "taxcode_country_code": "Z258"
+  },
+  {
+    "displayName": "Turks E Caicos (isole)",
+    "value": "TCA",
+    "english_country_name": "Turks and Caicos Islands",
+    "taxcode_country_code": "Z519"
+  },
+  {
+    "displayName": "Tuvalu",
+    "value": "TUV",
+    "english_country_name": "Tuvalu",
+    "taxcode_country_code": "Z732"
+  },
+  {
+    "displayName": "Ucraina",
+    "value": "UKR",
+    "english_country_name": "Ukraine",
+    "taxcode_country_code": "Z138"
+  },
+  {
+    "displayName": "Uganda",
+    "value": "UGA",
+    "english_country_name": "Uganda",
+    "taxcode_country_code": "Z353"
+  },
+  {
+    "displayName": "Ungheria",
+    "value": "HUN",
+    "english_country_name": "Hungary",
+    "taxcode_country_code": "Z134"
+  },
+  {
+    "displayName": "Uruguay",
+    "value": "URY",
+    "english_country_name": "Uruguay",
+    "taxcode_country_code": "Z613"
+  },
+  {
+    "displayName": "Uzbekistan",
+    "value": "UZB",
+    "english_country_name": "Uzbekistan",
+    "taxcode_country_code": "Z259"
+  },
+  {
+    "displayName": "Vanuatu",
+    "value": "VUT",
+    "english_country_name": "Vanuatu",
+    "taxcode_country_code": "Z733"
+  },
+  {
+    "displayName": "Venezuela",
+    "value": "VEN",
+    "english_country_name": "Venezuela (Bolivarian Republic of)",
+    "taxcode_country_code": "Z614"
+  },
+  {
+    "displayName": "Vietnam",
+    "value": "VNM",
+    "english_country_name": "Viet Nam",
+    "taxcode_country_code": "Z251"
+  },
+  {
+    "displayName": "Wallis E Futuna (isole)",
+    "value": "WLF",
+    "english_country_name": "Wallis and Futuna",
+    "taxcode_country_code": "Z729"
+  },
+  {
+    "displayName": "Western Sahara",
+    "value": "ESH",
+    "english_country_name": "Western Sahara",
+    "taxcode_country_code": null
+  },
+  {
+    "displayName": "Yemen",
+    "value": "YEM",
+    "english_country_name": "Yemen",
+    "taxcode_country_code": "Z246"
+  },
+  {
+    "displayName": "Zambia",
+    "value": "ZMB",
+    "english_country_name": "Zambia",
+    "taxcode_country_code": "Z355"
+  },
+  {
+    "displayName": "Zimbabwe",
+    "value": "ZWE",
+    "english_country_name": "Zimbabwe",
+    "taxcode_country_code": "Z337"
+  }
+]

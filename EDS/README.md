@@ -5,23 +5,38 @@ This directory contains External Data Service implementations for IBM Content Na
 ## Available EDS
 
 ### ItalianLocationEDS
-**Directory**: `ItalianLocationEDS/`  
-**Status**: ✅ Production Ready  
-**Version**: 1.0.0
+**Directory**: `ItalianLocationEDS/`
+**Status**: ✅ Production Ready
+**Version**: 1.1.0
 
-Provides hierarchical selection of Italian provinces and municipalities for Content Navigator entry templates.
+Provides hierarchical selection of Italian states, provinces and municipalities for Content Navigator entry templates, with automatic Italian fiscal code (Codice Fiscale) calculation.
 
 **Features**:
-- 107 Italian provinces
-- 7,904 Italian municipalities
-- Dependent choice lists (Province → Municipality)
-- Fully tested and deployed
+
+*Geographical selection*
+- 239 world states with ISO codes (choice list)
+- 107 Italian provinces (dependent on state = Italy)
+- 7,904 Italian municipalities with Belfiore codes (dependent on province)
+- Foreign state handling: when a non-Italian state is selected, province and municipality are automatically set to a configurable placeholder value
+
+*Fiscal code calculation*
+- Automatic calculation of the Italian Codice Fiscale from: surname, first name, date of birth, gender, and municipality/state of birth
+- Real-time update in the form as the user fills in the fields
+- Correct handling of ICN date serialization (UTC timezone conversion)
+- Support for both Italian birth (municipality Belfiore code) and foreign birth (country tax code)
+- Configurable symbolic names for all fields via `FiscalCodeConfig.json`
+
+*Configuration*
+- All property symbolic names configurable via JSON files (no recompilation needed)
+- Foreign state placeholder value configurable via `ForeignStateConfig.json`
 
 **Quick Start**:
 ```bash
-cd EDS/ItalianLocationEDS
-ant -f build-war.xml
-# Deploy the generated WAR to WebSphere
+# Requires JDK 8 and ICN lib directory
+export ICN_LIB_DIR="/path/to/ECMClient/lib"
+export JAVA8_HOME="/path/to/jdk1.8.0"
+cd EDS/ItalianLocationEDS && ant -f build-war.xml
+# Deploy dist/ItalianLocationEDS.war to WebSphere with context root /ItalianLocationEDS
 ```
 
 [📖 Full Documentation](ItalianLocationEDS/README.md)

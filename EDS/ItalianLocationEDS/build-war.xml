@@ -20,7 +20,10 @@
     <!-- Librerie Content Navigator -->
     <property environment="env"/>
     <property name="icn.lib.dir" value="${env.ICN_LIB_DIR}"/>
-    
+
+    <!-- JDK 8 per compatibilità WebSphere 9 (sovrascrivibile con -Djava8.home=...) -->
+    <property name="java8.home" value="${env.JAVA8_HOME}"/>
+
     <!-- Classpath per la compilazione -->
     <path id="compile.classpath">
         <fileset dir="${icn.lib.dir}">
@@ -50,16 +53,19 @@
     <!-- Target: compile -->
     <target name="compile" depends="init" description="Compila il codice sorgente">
         <echo message="Compilazione sorgenti Java per WAR"/>
-        <javac srcdir="${src.dir}" 
+        <javac srcdir="${src.dir}"
                destdir="${classes.dir}"
                includeantruntime="false"
                encoding="UTF-8"
                source="1.8"
                target="1.8"
-               debug="true">
+               debug="true"
+               executable="${java8.home}/bin/javac"
+               fork="true">
             <classpath refid="compile.classpath"/>
-            <!-- Compila solo i servlet, non il plugin -->
+            <!-- Compila servlet e utility (es. FiscalCodeCalculator), escludi il plugin ICN -->
             <include name="**/servlets/**/*.java"/>
+            <include name="**/utils/**/*.java"/>
             <exclude name="**/filters/**/*.java"/>
             <exclude name="**/ItalianLocationPlugin.java"/>
         </javac>

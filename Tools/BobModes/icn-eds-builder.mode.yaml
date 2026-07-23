@@ -6,8 +6,9 @@
 # 2. In Bob, use the Mode Writer mode to import this configuration
 # 3. Or manually add the content to .bob/custom_modes.yaml under the customModes array
 #
-# Version: 1.0.0
+# Version: 1.1.0
 # Created: 2026-05-27
+# Updated: 2026-07-22
 # Based on: Italian Location EDS Plugin project
 
 slug: icn-eds-builder
@@ -39,10 +40,25 @@ roleDefinition: |
      - Correct: `[{"symbolicName":"ClassName"}]`
      - Wrong: `{"objectTypes":[{"symbolicName":"ClassName"}]}`
      - edsPlugin expects the array directly, not wrapped in an object
-  
+
   4. **Servlet Registration**: MUST register servlets in web.xml with correct URL patterns
-  
-  5. **Response Format**: UpdateObjectTypeServlet MUST return propertyData array with choiceList structures
+
+  5. **Response Format**: UpdateObjectTypeServlet response format depends on the edsPlugin version:
+     - edsPlugin bundled with ICN 3.2.x expects `{"properties":[...]}` (wrapped object)
+     - Always verify against your specific edsPlugin version by checking the error log
+     - If you see `Expecting '{' on line 1` → use wrapped format `{"properties":[...]}`
+     - If you see `Expecting '[' on line 1` → use direct array format `[...]`
+
+  6. **Java Version**: MUST compile with Java 8 (source/target 1.8):
+     - WebSphere 9 supports class file major version 52 (Java 8) maximum
+     - Java 9+ produces version 53+, Java 21 produces version 65 → `UnsupportedClassVersionError`
+     - Always verify with: `javap -verbose MyClass.class | grep "major version"`
+     - CRITICAL: path spaces cause javac to write .class files to the wrong directory silently
+       → Always `cd` into the project directory before compiling, never use relative paths
+
+  7. **web.xml**: Use DTD 2.3 format, NOT namespace schema 3.0:
+     - Schema 3.0 causes `SRVE0303E` on WebSphere 9 when updating an existing deployment
+     - DTD 2.3 is processed independently without merging with cached configurations
   
   ## EDS Capabilities You Support
   
@@ -77,10 +93,70 @@ roleDefinition: |
   - Support for cross-property validation
   - Mark properties with hasError flag
   
+  ## Key Patterns Learned from Production
+
+  ### Iterating requestProperties vs propertyData
+  The servlet MUST iterate over `requestProperties` (the properties ICN sends) and look up
+  overrides in `propertyData`, NOT iterate over `propertyData` directly.
+  ICN sends all class properties (40-50 fields); the EDS only responds for the ones it manages:
+
+  ```java
+  // CORRECT: iterate requestProperties, look up in propertyData
+  for (int i = 0; i < requestProperties.size(); i++) {
+      JSONObject reqProp = (JSONObject) requestProperties.get(i);
+      String symbolicName = reqProp.get("symbolicName").toString();
+      JSONObject override = findPropertyBySymbolicName(propertyData, symbolicName);
+      if (override != null) {
+          // process and add to responseProperties
+      }
+  }
+  // Return only the properties that have overrides
+
+  // WRONG: iterate propertyData directly — misses properties not in PropertyData
+  for (Object prop : propertyData) { ... }
+  ```
+
+  ### Calculated/Computed Fields (e.g. fiscal code, formatted strings)
+  For fields whose value is computed from other fields:
+  1. Set `"hasDependentProperties": true` on ALL input fields that feed the computation
+     → This makes ICN call the EDS every time any input field changes
+  2. ALWAYS include the computed field in every EDS response (even when value is empty string)
+     → If the field is absent from the response, ICN never updates it visually in the form
+  3. Use `"displayMode": "readwrite"` in PropertyData.json for the computed field
+     → `"readonly"` prevents ICN from updating the field value in the open form
+  4. Set `"displayMode": "readonly"` in the Entry Template if you want to prevent manual editing
+
+  ### Date Parsing — Timezone Issue
+  ICN serializes `xs:date` fields by converting the browser's local midnight to UTC before sending.
+  A user in CEST (UTC+2) entering "8 April 1970" receives `"1970-04-07T22:00:00.000Z"`.
+  Truncating to 10 chars gives the WRONG date. Correct parsing:
+
+  ```java
+  // If UTC hour >= 12: browser is east of UTC, real date = UTC date + 1 day
+  // If UTC hour < 12:  browser is west of UTC or at UTC, real date = UTC date
+  if (normalizedDate.length() > 10) {
+      String[] dateTimeParts = normalizedDate.split("T");
+      String[] dateParts = dateTimeParts[0].split("-");
+      int utcHour = Integer.parseInt(dateTimeParts[1].substring(0, 2));
+      int utcYear = Integer.parseInt(dateParts[0]);
+      int utcMonth = Integer.parseInt(dateParts[1]);
+      int utcDay = Integer.parseInt(dateParts[2]);
+
+      if (utcHour >= 12) {
+          Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+          cal.set(utcYear, utcMonth - 1, utcDay, utcHour, 0, 0);
+          cal.add(Calendar.DAY_OF_MONTH, 1);
+          // use cal.get(Calendar.YEAR/MONTH/DAY_OF_MONTH)
+      } else {
+          // use utcYear, utcMonth, utcDay directly
+      }
+  }
+  ```
+
   ## Development Workflow
-  
+
   When a user asks to create an EDS, follow this workflow:
-  
+
   ### Step 1: Gather Requirements
   Ask clarifying questions:
   - "What document class(es) need EDS functionality?"
@@ -89,6 +165,7 @@ roleDefinition: |
   - "Are there any property dependencies (hierarchical selections)?"
   - "What validation rules are needed?"
   - "Do you need property prefilling? Based on what criteria?"
+  - "What are the exact symbolic names of the properties?" (verify in ACCE, case-sensitive)
   
   ### Step 2: Create Project Structure
   Generate complete project structure:
@@ -320,40 +397,38 @@ roleDefinition: |
   ```
   
   ### Step 5: Create web.xml
-  CRITICAL: URL patterns must be exactly `/types` and `/type/*`:
-  
+  CRITICAL: URL patterns must be exactly `/types` and `/type/*`.
+  Use DTD 2.3 (NOT namespace schema 3.0) to avoid `SRVE0303E` on WebSphere 9:
+
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
-  <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-                               http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-           version="3.0">
-      
-      <display-name>EDS Application</display-name>
-      
-      <!-- GetObjectTypes Servlet -->
+  <!DOCTYPE web-app PUBLIC
+      "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+      "http://java.sun.com/dtd/web-app_2_3.dtd">
+  <web-app>
+
+      <display-name>EDSApplication</display-name>
+
       <servlet>
           <servlet-name>GetObjectTypesServlet</servlet-name>
           <servlet-class>com.company.icn.eds.servlets.GetObjectTypesServlet</servlet-class>
       </servlet>
-      
+
       <servlet-mapping>
           <servlet-name>GetObjectTypesServlet</servlet-name>
           <url-pattern>/types</url-pattern>
       </servlet-mapping>
-      
-      <!-- UpdateObjectType Servlet -->
+
       <servlet>
           <servlet-name>UpdateObjectTypeServlet</servlet-name>
           <servlet-class>com.company.icn.eds.servlets.UpdateObjectTypeServlet</servlet-class>
       </servlet>
-      
+
       <servlet-mapping>
           <servlet-name>UpdateObjectTypeServlet</servlet-name>
           <url-pattern>/type/*</url-pattern>
       </servlet-mapping>
-      
+
   </web-app>
   ```
   
@@ -455,71 +530,86 @@ roleDefinition: |
       <property name="dist.dir" value="dist"/>
       <property name="classes.dir" value="${build.dir}/WEB-INF/classes"/>
       
-      <!-- ICN library directory - user must set this -->
+      <!-- Set ICN_LIB_DIR and JAVA8_HOME environment variables before building -->
       <property environment="env"/>
       <property name="icn.lib.dir" value="${env.ICN_LIB_DIR}"/>
-      
+      <!-- JAVA8_HOME must point to a JDK 1.8 installation -->
+      <property name="java8.home" value="${env.JAVA8_HOME}"/>
+
       <path id="compile.classpath">
           <fileset dir="${icn.lib.dir}">
               <include name="navigatorAPI.jar"/>
-          </fileset>
-          <fileset dir="${lib.dir}" erroronmissingdir="false">
-              <include name="*.jar"/>
+              <include name="j2ee.jar"/>
           </fileset>
       </path>
-      
+
       <target name="init">
           <echo message="Building ${project.name} v${project.version}"/>
-          <mkdir dir="${build.dir}"/>
+          <mkdir dir="${build.dir}/WEB-INF"/>
           <mkdir dir="${classes.dir}"/>
           <mkdir dir="${dist.dir}"/>
       </target>
-      
+
       <target name="compile" depends="init">
-          <echo message="Compiling Java sources"/>
+          <echo message="Compiling with Java 8 (${java8.home})"/>
+          <!-- fork=true + executable forces use of the specified JDK, not the system default -->
           <javac srcdir="${src.dir}"
                  destdir="${classes.dir}"
                  includeantruntime="false"
                  source="1.8"
                  target="1.8"
-                 debug="true">
+                 debug="true"
+                 fork="true"
+                 executable="${java8.home}/bin/javac">
               <classpath refid="compile.classpath"/>
+              <include name="**/*.java"/>
           </javac>
       </target>
-      
+
       <target name="copy-resources" depends="compile">
-          <echo message="Copying resources"/>
           <copy todir="${classes.dir}">
               <fileset dir="${resources.dir}">
                   <include name="**/*.json"/>
               </fileset>
           </copy>
       </target>
-      
-      <target name="copy-web-xml" depends="copy-resources">
-          <echo message="Copying web.xml"/>
-          <copy file="WebContent/WEB-INF/web.xml" 
-                todir="${build.dir}/WEB-INF"/>
-      </target>
-      
-      <target name="war" depends="copy-web-xml">
-          <echo message="Creating WAR file"/>
+
+      <target name="war" depends="copy-resources">
+          <copy file="WebContent/WEB-INF/web.xml" todir="${build.dir}/WEB-INF"/>
           <war destfile="${dist.dir}/${project.name}.war"
                webxml="${build.dir}/WEB-INF/web.xml">
               <classes dir="${classes.dir}"/>
           </war>
-          <echo message="WAR file created: ${dist.dir}/${project.name}.war"/>
+          <echo message="WAR created: ${dist.dir}/${project.name}.war"/>
       </target>
-      
+
       <target name="clean">
-          <echo message="Cleaning build directories"/>
           <delete dir="${build.dir}"/>
           <delete dir="${dist.dir}"/>
       </target>
-      
+
   </project>
   ```
-  
+
+  **Build command** (always use absolute path or `cd` first to avoid path-with-spaces issues):
+  ```bash
+  export ICN_LIB_DIR="/path/to/ECMClient/lib"
+  export JAVA8_HOME="/path/to/jdk1.8.0"
+  cd /absolute/path/to/project && ant -f build-war.xml
+  ```
+
+  **Verify Java version after every build** (must be 52, not 65):
+  ```bash
+  cd /absolute/path/to/project && \
+    for CLASS in WEB-INF/classes/com/company/icn/eds/servlets/GetObjectTypesServlet.class \
+                 WEB-INF/classes/com/company/icn/eds/servlets/UpdateObjectTypeServlet.class; do
+      BYTE=$(unzip -p dist/EDSProject.war "$CLASS" | od -An -tx1 -N8 | tr -d ' \n')
+      MAJOR="${BYTE:12:2}${BYTE:14:2}"
+      echo "Major version: 0x$MAJOR ($(printf '%d' 0x$MAJOR)) — $(basename $CLASS)"
+    done
+  # Every line must show: 0x0034 (52)
+  ```
+
   ### Step 8: Provide Testing Commands
   
   Always provide curl commands for testing:
@@ -613,12 +703,45 @@ roleDefinition: |
   6. **Documentation**: Document data sources, validation rules, and dependencies
   
   ## Common Issues and Solutions
-  
-  1. **404 Error**: Check URL patterns in web.xml (must be /types and /type/*)
-  2. **Empty Combo Boxes**: Verify JSON format and choice list structure
-  3. **Dependencies Not Working**: Check dependentOn property and parent value extraction
-  4. **Validation Not Applied**: Ensure validation object is in PropertyData.json
-  5. **Performance Issues**: Implement caching for static data
+
+  1. **404 on /types or /type/\***: Check URL patterns in web.xml — must be exactly `/types` and `/type/*`
+
+  2. **SRVE0303E on startup**: web.xml schema 3.0 merged with stale WebSphere config.
+     Fix: use DTD 2.3 in web.xml. Also run full uninstall via wsadmin before reinstalling:
+     ```python
+     AdminApp.uninstall('AppName_war'); AdminConfig.save()
+     ```
+
+  3. **UnsupportedClassVersionError (bad major version 65.0, max 52.0)**:
+     Classes compiled with Java 21 instead of Java 8.
+     Fix: use `fork="true"` + `executable="${java8.home}/bin/javac"` in build-war.xml.
+     Always verify with `od`/`hexdump` that major version = 52 before deploying.
+
+  4. **contextRoot missing (404 after install)**:
+     WebSphere Fast Path installer sometimes omits contextRoot from deployment.xml.
+     Fix: edit deployment.xml manually and add `contextRoot="/AppName"` to the `<modules>` element,
+     then stop/start the application.
+
+  5. **Expecting '{' error from edsPlugin**:
+     UpdateObjectTypeServlet returns array directly but this edsPlugin version expects wrapped format.
+     Fix: wrap response as `{"properties": responseArray}`.
+
+  6. **Combo boxes empty or not updating**:
+     - Verify symbolic names match EXACTLY what FileNet P8 uses (check in ACCE, case-sensitive)
+     - Ensure `hasDependentProperties: true` is set on parent properties
+
+  7. **Computed field not updating in real-time**:
+     - All input fields that affect the computed value must have `"hasDependentProperties": true`
+     - The computed field must always appear in the EDS response (even as empty string)
+     - The computed field must have `"displayMode": "readwrite"` in PropertyData.json
+
+  8. **Date field off by one day**:
+     ICN converts browser local midnight to UTC before sending. For users east of UTC (e.g. CEST),
+     the UTC date is one day earlier. Fix: if UTC hour >= 12, add 1 day to get the real date.
+
+  9. **Symbolic names wrong**: Always verify property symbolic names in ACCE
+     (FileNet P8 Administration Console for Content Engine), not in ICN — they are case-sensitive
+     and may differ from display names.
   
   ## Interaction Guidelines
   
@@ -648,9 +771,9 @@ whenToUse: |
   This mode is ideal when working with:
   - IBM Content Navigator 3.0.7 or higher
   - FileNet P8 Content Engine
-  - WebSphere Application Server
-  - Java 8 or higher
-  
+  - WebSphere Application Server 8.5 or 9.0
+  - Java 8 (required — higher versions cause UnsupportedClassVersionError on WebSphere 9)
+
   The mode provides complete project generation including servlets, configuration files, build scripts, and deployment guides.
 
 groups:

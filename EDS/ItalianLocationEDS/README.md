@@ -1,19 +1,24 @@
 # Italian Location EDS Plugin per IBM Content Navigator
 
-Plugin External Data Service (EDS) per la gestione di province e comuni italiani in IBM Content Navigator.
+Plugin External Data Service (EDS) per la gestione di stati, province e comuni italiani in IBM Content Navigator.
 
 ## Descrizione
 
-Questo plugin fornisce combo box dinamiche per la selezione di province e comuni italiani con selezione gerarchica:
-- **Provincia**: Combo box con 107 province italiane
-- **Comune**: Combo box con comuni filtrati in base alla provincia selezionata
+Questo plugin fornisce combo box dinamiche per la selezione gerarchica di località italiane ed estere:
+- **Stato**: Combo box con 239 stati (Italia prioritaria, poi ordine alfabetico)
+- **Provincia**: Combo box con 107 province italiane (abilitata solo se Stato = Italia)
+- **Comune**: Combo box con comuni filtrati in base alla provincia selezionata (abilitata solo se Stato = Italia)
 
 ## Caratteristiche
 
-✅ **Selezione Gerarchica**: La scelta della provincia filtra automaticamente i comuni  
-✅ **Dati Completi**: 107 province e 7.904 comuni italiani  
-✅ **Integrazione Nativa**: Utilizza l'architettura EDS standard di IBM  
-✅ **Performance**: Caricamento dinamico dei dati solo quando necessario  
+✅ **Selezione Gerarchica a 3 Livelli**: Stato → Provincia → Comune
+✅ **Logica Condizionale**: Provincia e Comune abilitati solo per l'Italia
+✅ **Dati Completi**: 239 stati, 107 province e 7.904 comuni italiani
+✅ **Attributi Estesi**: Ogni stato include nome inglese e codice fiscale
+✅ **Calcolo Codice Fiscale**: Generazione automatica del Codice Fiscale italiano
+✅ **Integrazione Nativa**: Utilizza l'architettura EDS standard di IBM
+✅ **Performance**: Caricamento dinamico dei dati solo quando necessario
+✅ **Configurabilità**: Nomi delle proprietà personalizzabili tramite file JSON
 
 ## Architettura
 
@@ -65,8 +70,21 @@ cp dist/ItalianLocationEDS.war /path/to/websphere/
 
 Il plugin è configurato per la classe `CartellaPersona` con le seguenti proprietà:
 
-- **Provinciadinascita**: Combo box con province italiane
-- **Comunedinascita**: Combo box con comuni (filtrati per provincia)
+- **Statodinascita**: Combo box con 239 stati (Italia prioritaria)
+- **Provinciadinascita**: Combo box con 107 province italiane (abilitata solo se Stato = Italia)
+- **Comunedinascita**: Combo box con comuni filtrati per provincia (abilitata solo se Stato = Italia)
+
+### Logica Condizionale
+
+Quando l'utente seleziona uno **stato diverso dall'Italia**:
+- I campi Provincia e Comune vengono **automaticamente disabilitati**
+- I valori precedenti vengono **svuotati**
+
+Quando l'utente seleziona **Italia**:
+- I campi Provincia e Comune vengono **riabilitati**
+- La selezione gerarchica Provincia → Comune funziona normalmente
+
+### Aggiungere Altre Classi
 
 Per aggiungere altre classi, modifica `resources/ObjectTypes.json`:
 
@@ -82,16 +100,23 @@ E crea il file di configurazione corrispondente in `resources/AltraClasse_Proper
 ## Struttura File
 
 ```
-ItalianLocationPlugin/
+ItalianLocationEDS/
 ├── src/
-│   └── com/ibm/icn/extensions/servlets/
-│       ├── GetObjectTypesServlet.java
-│       └── UpdateObjectTypeServlet.java
+│   └── com/ibm/icn/extensions/
+│       ├── servlets/
+│       │   ├── GetObjectTypesServlet.java
+│       │   └── UpdateObjectTypeServlet.java
+│       └── utils/
+│           └── FiscalCodeCalculator.java (NEW)
 ├── resources/
 │   ├── ObjectTypes.json
 │   ├── CartellaPersona_PropertyData.json
+│   ├── FiscalCodeConfig.json (NEW)
+│   ├── PropertyNamesConfig.json
+│   ├── ForeignStateConfig.json
+│   ├── gi_stati.json (239 stati con attributi estesi)
 │   ├── gi_province.json (107 province)
-│   └── gi_comuni.json (7.904 comuni)
+│   └── gi_comuni.json (7.904 comuni con codici Belfiore)
 ├── WebContent/WEB-INF/
 │   └── web.xml
 ├── dist/
@@ -99,8 +124,29 @@ ItalianLocationPlugin/
 └── docs/
     ├── DEPLOYMENT_GUIDE_WAR.md
     ├── EDSPLUGIN_CONFIGURATION.md
-    └── TECHNICAL_NOTES.md
+    ├── TECHNICAL_NOTES.md
+    ├── FISCAL_CODE_FEATURE.md (NEW)
+    ├── CHANGELOG_STATO.md
+    └── CHANGELOG_FISCAL_CODE.md (NEW)
 ```
+
+### Formato File gi_stati.json
+
+Ogni stato include i seguenti attributi:
+
+```json
+{
+  "displayName": "Italia",
+  "value": "ITA",
+  "english_country_name": "Italy",
+  "taxcode_country_code": ""
+}
+```
+
+- **displayName**: Nome italiano formattato (Title Case)
+- **value**: Codice ISO 3166-1 alpha-3
+- **english_country_name**: Nome inglese dello stato
+- **taxcode_country_code**: Codice fiscale italiano (per uso futuro)
 
 ## Build
 
@@ -129,7 +175,7 @@ Risposta attesa:
 [{"symbolicName":"CartellaPersona"}]
 ```
 
-### Test Servlet UpdateObjectType
+### Test Servlet UpdateObjectType - Caricamento Iniziale
 
 ```bash
 curl -k -X POST https://your-server:port/ItalianLocationEDS/type/CartellaPersona \
@@ -141,7 +187,61 @@ curl -k -X POST https://your-server:port/ItalianLocationEDS/type/CartellaPersona
   }'
 ```
 
-Risposta attesa: JSON con le 107 province.
+Risposta attesa: JSON con 239 stati (Italia prima).
+
+### Test con Stato = Italia
+
+```bash
+curl -k -X POST https://your-server:port/ItalianLocationEDS/type/CartellaPersona \
+  -H "Content-Type: application/json" \
+  -d '{
+    "repositoryId": "FNOS",
+    "requestMode": "initialNewObject",
+    "properties": [
+      {"symbolicName": "Statodinascita", "value": "ITA"}
+    ]
+  }'
+```
+
+Risposta attesa: Provincia e Comune abilitati (`displayMode: "readwrite"`).
+
+### Test Calcolo Codice Fiscale
+
+```bash
+curl -k -X POST https://your-server:port/ItalianLocationEDS/type/CartellaPersona \
+  -H "Content-Type: application/json" \
+  -d '{
+    "repositoryId": "FNOS",
+    "requestMode": "initialNewObject",
+    "properties": [
+      {"symbolicName": "NomePersona", "value": "Mario"},
+      {"symbolicName": "CognomePersona", "value": "Rossi"},
+      {"symbolicName": "DatadiNascita", "value": "10/10/1985"},
+      {"symbolicName": "SessoPersona", "value": "M"},
+      {"symbolicName": "Statodinascita", "value": "ITA"},
+      {"symbolicName": "Provinciadinascita", "value": "PD"},
+      {"symbolicName": "Comunedinascita", "value": "Abano Terme"}
+    ]
+  }'
+```
+
+Risposta attesa: JSON con proprietà `CodiceFiscale` valorizzata a `RSSMRA85R10A001S`.
+
+### Test con Stato Estero
+
+```bash
+curl -k -X POST https://your-server:port/ItalianLocationEDS/type/CartellaPersona \
+  -H "Content-Type: application/json" \
+  -d '{
+    "repositoryId": "FNOS",
+    "requestMode": "initialNewObject",
+    "properties": [
+      {"symbolicName": "Statodinascita", "value": "FRA"}
+    ]
+  }'
+```
+
+Risposta attesa: Provincia e Comune disabilitati (`displayMode: "readonly"`).
 
 ## Troubleshooting
 
@@ -164,15 +264,89 @@ Questi URL sono hardcoded in edsPlugin e non possono essere modificati.
 ### I comuni non si filtrano
 
 Verifica che:
-1. Il campo `Provinciadinascita` sia configurato con `hasDependentProperties: true`
-2. Il campo `Comunedinascita` sia configurato con `dependentOn: "Provinciadinascita"`
-3. I nomi simbolici delle proprietà corrispondano esattamente
+1. Il campo `Statodinascita` sia configurato con `hasDependentProperties: true`
+2. Il campo `Provinciadinascita` sia configurato con `dependentOn: "Statodinascita"` e `hasDependentProperties: true`
+3. Il campo `Comunedinascita` sia configurato con `dependentOn: "Provinciadinascita"`
+4. I nomi simbolici delle proprietà corrispondano esattamente
+
+### Provincia e Comune non si disabilitano con stato estero
+
+Verifica che:
+1. Il valore dello stato sia esattamente "ITA" (case-sensitive)
+2. Il servlet UpdateObjectTypeServlet sia stato aggiornato con la logica condizionale
+3. I log del servlet mostrino i messaggi di debug sulla disabilitazione
+
+### Il Codice Fiscale non viene calcolato
+
+Verifica che:
+1. Tutti i campi obbligatori siano compilati (Nome, Cognome, Data di nascita, Sesso, Stato, Comune)
+2. Il formato della data sia corretto (`dd/MM/yyyy` o `yyyy-MM-dd`)
+3. Il comune esista nel file `gi_comuni.json` con il codice Belfiore
+4. Per nascite estere, lo stato abbia un codice fiscale in `gi_stati.json`
+5. I log del servlet mostrino i messaggi di debug del calcolo
+
+### Codice Fiscale errato
+
+Verifica che:
+1. I dati inseriti siano corretti (nome, cognome, data, sesso)
+2. Il codice Belfiore del comune sia corretto in `gi_comuni.json`
+3. Per nascite estere, il codice fiscale dello stato sia corretto in `gi_stati.json`
+
+## Funzionalità Codice Fiscale
+
+L'EDS include il calcolo automatico del Codice Fiscale italiano. Quando l'utente compila i seguenti campi:
+- Nome
+- Cognome
+- Data di nascita
+- Stato di nascita
+- Provincia di nascita (se Italia)
+- Comune di nascita
+- Sesso
+
+Il sistema calcola automaticamente il Codice Fiscale e lo inserisce nel campo dedicato.
+
+### Esempio
+
+**Input**:
+- Nome: Mario
+- Cognome: Rossi
+- Data di nascita: 10/10/1985
+- Sesso: M
+- Stato: Italia
+- Provincia: PD (Padova)
+- Comune: Abano Terme
+
+**Output**: `RSSMRA85R10A001S`
+
+### Configurazione
+
+I nomi delle proprietà utilizzate per il calcolo sono configurabili nel file [`FiscalCodeConfig.json`](resources/FiscalCodeConfig.json):
+
+```json
+{
+  "firstNamePropertyName": "NomePersona",
+  "lastNamePropertyName": "CognomePersona",
+  "birthDatePropertyName": "DatadiNascita",
+  "birthStatePropertyName": "Statodinascita",
+  "birthProvincePropertyName": "Provinciadinascita",
+  "birthMunicipalityPropertyName": "Comunedinascita",
+  "genderPropertyName": "SessoPersona",
+  "fiscalCodePropertyName": "CodiceFiscale"
+}
+```
+
+Per maggiori dettagli, consulta la [documentazione completa del Codice Fiscale](FISCAL_CODE_FEATURE.md).
 
 ## Documentazione Aggiuntiva
 
 - [DEPLOYMENT_GUIDE_WAR.md](DEPLOYMENT_GUIDE_WAR.md) - Guida dettagliata al deployment
 - [EDSPLUGIN_CONFIGURATION.md](EDSPLUGIN_CONFIGURATION.md) - Configurazione edsPlugin
 - [TECHNICAL_NOTES.md](TECHNICAL_NOTES.md) - Note tecniche e analisi architetturale
+- [FISCAL_CODE_FEATURE.md](FISCAL_CODE_FEATURE.md) ⭐ **NEW** - Funzionalità Codice Fiscale
+- [CHANGELOG_FISCAL_CODE.md](CHANGELOG_FISCAL_CODE.md) ⭐ **NEW** - Changelog Codice Fiscale
+- [CHANGELOG_STATO.md](CHANGELOG_STATO.md) - Changelog Stati
+- [CHANGELOG_CONFIGURABLE_NAMES.md](CHANGELOG_CONFIGURABLE_NAMES.md) - Changelog Nomi Configurabili
+- [CHANGELOG_FOREIGN_STATE.md](CHANGELOG_FOREIGN_STATE.md) - Changelog Stato Estero
 
 ## Licenza
 

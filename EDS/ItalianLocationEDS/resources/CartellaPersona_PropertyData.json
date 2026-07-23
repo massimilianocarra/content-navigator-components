@@ -1,5 +1,15 @@
 [
   {
+    "symbolicName": "Statodinascita",
+    "displayMode": "readwrite",
+    "required": true,
+    "choiceList": {
+      "displayName": "Seleziona Stato",
+      "choices": []
+    },
+    "hasDependentProperties": true
+  },
+  {
     "symbolicName": "Provinciadinascita",
     "displayMode": "readwrite",
     "required": true,
@@ -7,7 +17,8 @@
       "displayName": "Seleziona Provincia",
       "choices": []
     },
-    "hasDependentProperties": true
+    "hasDependentProperties": true,
+    "dependentOn": "Statodinascita"
   },
   {
     "symbolicName": "Comunedinascita",
@@ -17,6 +28,37 @@
       "displayName": "Seleziona Comune",
       "choices": []
     },
+    "hasDependentProperties": true,
     "dependentOn": "Provinciadinascita"
+  },
+  {
+    "symbolicName": "Nome",
+    "displayMode": "readwrite",
+    "required": false,
+    "hasDependentProperties": true
+  },
+  {
+    "symbolicName": "Cognome",
+    "displayMode": "readwrite",
+    "required": false,
+    "hasDependentProperties": true
+  },
+  {
+    "symbolicName": "DataDiNascita",
+    "displayMode": "readwrite",
+    "required": false,
+    "hasDependentProperties": true
+  },
+  {
+    "symbolicName": "SessoPersona",
+    "displayMode": "readwrite",
+    "required": false,
+    "hasDependentProperties": true
+  },
+  {
+    "symbolicName": "CodiceFiscale",
+    "displayMode": "readwrite",
+    "required": false,
+    "value": ""
   }
 ]
